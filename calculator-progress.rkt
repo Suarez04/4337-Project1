@@ -65,3 +65,34 @@
     (error 'calculator "Unexpected trailing characters"))
   (first result))
 
+(define prompt?
+  (let ([args (current-command-line-arguments)])
+    (cond
+      [(= (vector-length args) 0) #t]
+      [(string=? (vector-ref args 0) "-b") #f]
+      [(string=? (vector-ref args 0) "--batch") #f]
+      [else #t])))
+
+;; Return the old history when an expression fails.
+(define (process-line line history)
+  (with-handlers ([exn:fail? (lambda (exn)
+                               (displayln "Error: Invalid expression")
+                               history)])
+    (define value (evaluate line history))
+    (define new-history (cons value history))
+    (display (length new-history))
+    (display ": ")
+    (display (real->double-flonum value))
+    (newline)
+    new-history))
+
+(define (eval-loop history)
+  (when prompt?
+    (display "Enter expression (quit to exit): ")
+    (flush-output))
+  (define line (read-line))
+  (unless (or (eof-object? line) (string=? line "quit"))
+    (eval-loop (process-line line history))))
+
+(module+ main
+  (eval-loop '()))

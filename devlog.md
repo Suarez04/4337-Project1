@@ -18,3 +18,11 @@ Implement the recursive expression parser, including numbers, history references
 
 Implemented recursive parsing for numbers, history references, unary negation, and the three binary operators. Each parser returns the value and unused input, which lets nested expressions work without mutable parser state. The top-level evaluator rejects trailing input. Runtime testing is still pending while a local Racket runtime is obtained.
 
+# 10/22/26 - 3:15 p.m. - Input and history: session start
+
+Add interactive and batch modes, pass history through the input loop, keep errors from changing history, and handle quit and EOF.
+
+# 10/22/26 - 5:06 p.m. - Input and history: session end
+
+Added the interactive loop and the -b/--batch options using the supplied mode detection approach. The loop passes the history list recursively. Only successful expressions are added, and errors leave the history unchanged. EOF exits as well as quit, so redirected files end cleanly. Results use real->double-flonum and display as required. Next step is to run sample inputs and targeted invalid expressions.
+
