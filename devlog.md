@@ -34,3 +34,12 @@ Write evaluator checks covering nested expressions, history lookup, fractional v
 
 Added evaluator checks for nested expressions, fractional results from the examples, oldest/newest history lookup, decimals, whitespace, invalid references, missing operands, division by zero, and trailing input. These tests are in tests.rkt and do not require third-party packages. The sample runs also need to be checked through the command-line interface, including whether errors consume history IDs.
 
+# 10/23/26 - 3:15 p.m. - Testing and documentation: session start
+
+Run the evaluator and command-line checks, compare the provided examples, and document usage and the differences between the handout and samples.
+
+# 10/23/26 - 3:43 p.m. - Testing and documentation: session end
+
+Downloaded a minimal Racket 8.18 runtime into a temporary directory for testing because Racket was not installed. It is not part of the submission. All 32 evaluator checks passed. All five provided examples passed in both -b and --batch modes when comparing numeric results, IDs, and error positions. Separate command-line checks passed for history after errors, EOF, interactive prompts, exact quit matching, and ignoring input after quit.
+
+The sample outputs differ from the required float formatting, so comparing their text byte for byte would fail even though the numeric results agree. Errors use the generic message allowed by the handout. Added a README explaining these decisions and included the provided samples for reference. I have not tested the program on cs1 or cs2. Before submitting, I need to review my code and verify the program on the course machines.
