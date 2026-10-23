@@ -7,7 +7,7 @@ A command-line prefix calculator written in Racket.
 - `calculator.rkt`: expression parser, history, and input loop.
 - `tests.rkt`: 32 checks for the evaluator, using only Racket.
 - `devlog.md`: development notes with session times.
-- `sample-runs/`: the provided input and expected-output examples.
+- `instructions/`: instructor handouts, sample devlog, mode detection code, and sample runs.
 - `.gitignore`: ignores generated Racket files and macOS metadata.
 - `calculator-progress.rkt`: implementation added in stages.
 - `.git/`: local Git repository.
@@ -24,8 +24,8 @@ racket calculator.rkt
 Batch mode prints results and errors without prompts:
 
 ```sh
-racket calculator.rkt -b < sample-runs/input1.txt
-racket calculator.rkt --batch < sample-runs/input2.txt
+racket calculator.rkt -b < instructions/sample-runs/input1.txt
+racket calculator.rkt --batch < instructions/sample-runs/input2.txt
 ```
 
 Enter exactly `quit` to stop. End of input also stops the program.
