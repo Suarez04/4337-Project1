@@ -26,3 +26,11 @@ Add interactive and batch modes, pass history through the input loop, keep error
 
 Added the interactive loop and the -b/--batch options using the supplied mode detection approach. The loop passes the history list recursively. Only successful expressions are added, and errors leave the history unchanged. EOF exits as well as quit, so redirected files end cleanly. Results use real->double-flonum and display as required. Next step is to run sample inputs and targeted invalid expressions.
 
+# 10/23/26 - 2:10 p.m. - Validation: session start
+
+Write evaluator checks covering nested expressions, history lookup, fractional values, whitespace, and invalid input. Prepare command-line sample checks.
+
+# 10/23/26 - 3:12 p.m. - Validation: session end
+
+Added evaluator checks for nested expressions, fractional results from the examples, oldest/newest history lookup, decimals, whitespace, invalid references, missing operands, division by zero, and trailing input. These tests are in tests.rkt and do not require third-party packages. The sample runs also need to be checked through the command-line interface, including whether errors consume history IDs.
+
